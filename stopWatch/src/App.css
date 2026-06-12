@@ -1,0 +1,304 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(
+    -45deg,
+    #0f172a,
+    #1e1b4b,
+    #312e81,
+    #0f172a
+  );
+  background-size:400% 400%;
+  animation:gradientMove 12s ease infinite;
+  overflow-x:hidden;
+}
+
+@keyframes gradientMove{
+  0%{
+    background-position:0% 50%;
+  }
+  50%{
+    background-position:100% 50%;
+  }
+  100%{
+    background-position:0% 50%;
+  }
+}
+
+.app{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+/* Main Card */
+
+.stopwatch-card{
+  width:500px;
+  max-width:95%;
+  padding:40px;
+  border-radius:32px;
+
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+
+  border:1px solid rgba(255,255,255,0.15);
+
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.35),
+    0 0 40px rgba(99,102,241,0.2);
+
+  text-align:center;
+  color:white;
+
+  animation:floatCard 4s ease-in-out infinite;
+}
+
+@keyframes floatCard{
+  0%,100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(-8px);
+  }
+}
+
+.stopwatch-card h1{
+  font-size:2.3rem;
+  font-weight:700;
+  margin-bottom:30px;
+  letter-spacing:1px;
+}
+
+/* Timer */
+
+.time-display{
+  font-size:4rem;
+  font-weight:700;
+  margin-bottom:35px;
+  letter-spacing:4px;
+
+  color:#fff;
+
+  text-shadow:
+    0 0 10px #38bdf8,
+    0 0 20px #38bdf8,
+    0 0 40px #38bdf8,
+    0 0 60px #38bdf8;
+
+  animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+  0%,100%{
+    transform:scale(1);
+  }
+  50%{
+    transform:scale(1.03);
+  }
+}
+
+/* Buttons */
+
+.button-group{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  position:relative;
+  overflow:hidden;
+
+  border:none;
+  padding:14px 30px;
+  border-radius:16px;
+
+  font-size:1rem;
+  font-weight:600;
+
+  cursor:pointer;
+  transition:all .3s ease;
+
+  color:white;
+}
+
+.btn::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:rgba(255,255,255,0.2);
+  transition:0.5s;
+}
+
+.btn:hover::before{
+  left:100%;
+}
+
+.btn:hover{
+  transform:translateY(-4px) scale(1.05);
+}
+
+.btn:active{
+  transform:scale(.95);
+}
+
+/* Start */
+
+.start{
+  background:linear-gradient(
+    135deg,
+    #22c55e,
+    #16a34a
+  );
+
+  box-shadow:
+    0 0 15px rgba(34,197,94,.5);
+}
+
+/* Lap */
+
+.lap{
+  background:linear-gradient(
+    135deg,
+    #3b82f6,
+    #2563eb
+  );
+
+  box-shadow:
+    0 0 15px rgba(59,130,246,.5);
+}
+
+/* Reset */
+
+.reset{
+  background:linear-gradient(
+    135deg,
+    #ef4444,
+    #dc2626
+  );
+
+  box-shadow:
+    0 0 15px rgba(239,68,68,.5);
+}
+
+.btn:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+/* Lap Section */
+
+.laps-container{
+  margin-top:35px;
+}
+
+.laps-container h2{
+  margin-bottom:18px;
+  font-size:1.3rem;
+}
+
+.laps-container ul{
+  list-style:none;
+  max-height:280px;
+  overflow-y:auto;
+  padding-right:5px;
+}
+
+.laps-container ul::-webkit-scrollbar{
+  width:6px;
+}
+
+.laps-container ul::-webkit-scrollbar-thumb{
+  background:#38bdf8;
+  border-radius:20px;
+}
+
+.laps-container li{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  margin-bottom:12px;
+  padding:14px 18px;
+
+  border-radius:16px;
+
+  background:rgba(255,255,255,0.08);
+
+  border:1px solid rgba(255,255,255,0.1);
+
+  backdrop-filter:blur(10px);
+
+  transition:all .3s ease;
+
+  animation:slideUp .4s ease;
+}
+
+.laps-container li:hover{
+  transform:translateX(5px);
+  background:rgba(255,255,255,0.12);
+}
+
+@keyframes slideUp{
+  from{
+    opacity:0;
+    transform:translateY(15px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.laps-container li span:first-child{
+  color:#93c5fd;
+  font-weight:500;
+}
+
+.laps-container li span:last-child{
+  color:#fff;
+  font-weight:600;
+}
+
+/* Mobile */
+
+@media(max-width:600px){
+
+  .stopwatch-card{
+    padding:25px;
+  }
+
+  .time-display{
+    font-size:2.8rem;
+    letter-spacing:2px;
+  }
+
+  .button-group{
+    flex-direction:column;
+  }
+
+  .btn{
+    width:100%;
+  }
+
+  .stopwatch-card h1{
+    font-size:1.8rem;
+  }
+}
